@@ -37,6 +37,29 @@ class ViewController: UIViewController {
         super.viewDidLoad()
   
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+          let alert = UIAlertController(title: "Thong bao", message: "Vui long nhap thong tin", preferredStyle: .alert)
+        
+        alert.addTextField { (edtEmail) in
+            edtEmail.placeholder = "Nhap email"
+        }
+        
+        alert.addTextField { (edtPass) in
+            edtPass.placeholder = "Nhap mat khau"
+            edtPass.isSecureTextEntry = true
+        }
+        
+        let btnOk: UIAlertAction = UIAlertAction(title: "OK", style: .default) { (btnOk) in
+            let email: String = alert.textFields![0].text!
+            let pass: String = alert.textFields![1].text!
+            
+            print(email, pass)
+        }
+        
+        alert.addAction(btnOk)
+        present(alert, animated: true, completion: nil)
+    }
 
 }
 
